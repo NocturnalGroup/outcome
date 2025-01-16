@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!-- Project -->
+        <LangVersion>latest</LangVersion>
+        <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
+        <RootNamespace>NocturnalGroup.Outcome</RootNamespace>
+
+        <!-- Features -->
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+</Project>
