@@ -1,8 +1,8 @@
-name: Validate Code Formatting
+name: Run Tests
 on: [push, pull_request]
 jobs:
-  validate:
-    name: Validate Formatting
+  unit:
+    name: Run Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -15,8 +15,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          dotnet tool restore
+          dotnet restore
 
-      - name: Validate formatting
+      - name: Run unit tests
         run: |
-          dotnet csharpier --check .
+          dotnet test Source/Outcome.Tests.Unit/Outcome.Tests.Unit.csproj
