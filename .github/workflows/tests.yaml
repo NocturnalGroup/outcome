@@ -13,10 +13,6 @@ jobs:
         with:
           dotnet-version: "9.x.x"
 
-      - name: Install dependencies
-        run: |
-          dotnet restore
-
       - name: Run unit tests
         run: |
           dotnet test Source/Outcome.Tests.Unit/Outcome.Tests.Unit.csproj
