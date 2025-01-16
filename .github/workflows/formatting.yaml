@@ -1,0 +1,20 @@
+name: Validate Code Formatting
+on: [push, pull_request]
+
+jobs:
+  validate:
+    name: "Validate Formatting"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Clone repository"
+        uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Run CSharpier
+        run: |
+          dotnet tool restore
+          dotnet csharpier --check .
