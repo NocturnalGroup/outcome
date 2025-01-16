@@ -1,0 +1,25 @@
+name: Publish Packages
+on: [release]
+jobs:
+  publish:
+    name: Publish to NuGet
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet: [ '8.x.x', '9.x.x' ]
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+
+      - name: Create Package
+        run: |
+          dotnet pack --configuration Release --output Packages Source/Outcome/Outcome.csproj
+
+      - name: Publish Package
+        run: |
+          dotnet nuget push Packages/*.nupkg --skip-duplicate -k ${{ secrets.NUGET_KEY }} -s "https://api.nuget.org/v3/index.json"

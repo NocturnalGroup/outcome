@@ -1,4 +1,4 @@
-name: Validate Code Formatting
+name: Validate Formatting
 on: [push, pull_request]
 jobs:
   validate:

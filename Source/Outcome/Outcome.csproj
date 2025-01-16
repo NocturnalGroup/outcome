@@ -9,6 +9,25 @@
         <!-- Features -->
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+
+        <!-- NuGet -->
+        <PackageId>NocturnalGroup.Outcome</PackageId>
+        <PackageVersion>1.0.0-preview.1</PackageVersion>
+        <Authors>Nocturnal Group</Authors>
+        <Description>Return types for problematic functions</Description>
+        <PackageProjectUrl>https://github.com/NocturnalGroup/outcome</PackageProjectUrl>
+		<PackageIcon>Logo.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/NocturnalGroup/outcome</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>result;outcome</PackageTags>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     </PropertyGroup>
+
+    <ItemGroup Label="Package assets">
+		<None Include="..\..\README.md" Pack="true" PackagePath=""/>
+		<None Include="..\..\LICENSE.txt" Pack="true" PackagePath=""/>
+		<None Include="..\..\Assets\Logo.png" Pack="true" PackagePath="" Visible="false" />
+    </ItemGroup>
 
 </Project>
