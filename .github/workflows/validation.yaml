@@ -1,8 +1,8 @@
-name: Run Tests
+name: Validation
 on: [push, pull_request]
 jobs:
-  unit:
-    name: Run Unit Tests
+  validate:
+    name: Validate Code
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -12,6 +12,14 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "9.x.x"
+
+      - name: Install dependencies
+        run: |
+          dotnet tool restore
+
+      - name: Validate formatting
+        run: |
+          dotnet csharpier --check .
 
       - name: Run unit tests
         run: |
