@@ -22,7 +22,6 @@ jobs:
       - name: Create Package
         run: |
           dotnet pack --configuration Release --output Packages -p:PackageVersion=${{ github.event.release.tag_name }} Source/Outcome/Outcome.csproj
-          ls Packages
 
       - name: Publish Package
         run: |
