@@ -1,6 +1,12 @@
 <img align="right" width="256" height="256" src="Assets/Logo.png">
 
-# Outcome
+<div id="user-content-toc">
+  <ul align="center" style="list-style: none;">
+    <summary>
+      <h1>Outcome</h1>
+    </summary>
+  </ul>
+</div>
 
 ### Return types for problematic functions
 
