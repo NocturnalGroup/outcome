@@ -11,7 +11,7 @@ var userService = new UserService();
 var createOperation = userService.CreateUser("John123");
 if (createOperation.Failed)
 {
-	Console.WriteLine($"Failed to create user: {createOperation.Error.Message}");
+	Console.Out.WriteLine($"Failed to create user: {createOperation.Error.Message}");
 	return;
 }
 
@@ -31,4 +31,4 @@ if (status is OperationStatus.Failed)
 	}
 }
 
-Console.WriteLine(user);
+Console.Out.WriteLine(user);
