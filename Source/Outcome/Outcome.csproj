@@ -12,7 +12,6 @@
 
         <!-- NuGet -->
         <PackageId>NocturnalGroup.Outcome</PackageId>
-        <PackageVersion>1.0.0-preview.1</PackageVersion>
         <Authors>Nocturnal Group</Authors>
         <Description>Return types for problematic functions</Description>
         <PackageProjectUrl>https://github.com/NocturnalGroup/outcome</PackageProjectUrl>
