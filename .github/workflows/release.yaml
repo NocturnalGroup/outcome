@@ -16,6 +16,10 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet }}
 
+      - name: Run unit tests
+        run: |
+          dotnet test Source/Outcome.Tests.Unit/Outcome.Tests.Unit.csproj
+
       - name: Create Package
         run: |
           dotnet pack --configuration Release --output Packages Source/Outcome/Outcome.csproj
