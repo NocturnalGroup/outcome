@@ -1,10 +1,12 @@
-name: Publish Packages
+name: Publish Project
 on:
   release:
-    types: [published]
+    types: [released]
+permissions:
+  contents: read
 jobs:
-  publish:
-    name: Publish to NuGet
+  csharp-tests:
+    name: Run C# Tests
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -15,9 +17,22 @@ jobs:
         with:
           dotnet-version: "9.x.x"
 
-      - name: Run unit tests
+      - name: Run Tests
         run: |
-          dotnet test Source/Outcome.Tests.Unit/Outcome.Tests.Unit.csproj
+          dotnet test
+
+  csharp-publish:
+    name: Publish C# to NuGet
+    runs-on: ubuntu-latest
+    needs: [csharp-tests]
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.x.x"
 
       - name: Create Package
         run: |
