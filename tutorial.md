@@ -10,49 +10,37 @@
 
 ### Return types for problematic functions
 
+[About](readme.md) · Getting Started · [License](license.txt) · [Contributing](contributing.md)
+
 ---
-
-Outcome is a set of types used to implement the result pattern.
-
-## Why?
-
-In our opinion, exceptions are annoying to deal with.
-The `try catch` mechanism is ugly, and there's no way to tell if a function throws an exception.
-Most errors aren't "exceptional" and don't justify the resource cost of an exception.
-They should be saved for critical problems.
-The `Outcome` types are much lighter and can provide a better error handling experience.
 
 ## Installing
 
-You can install the package from [NuGet](https://www.nuget.org/packages/NocturnalGroup.Outcome):
+Please see the installation instructions [here](readme.md#Installing).
 
-```shell
-dotnet add package NocturnalGroup.Outcome
-```
-
-## Usage
-
-_A complete example of how to use the Outcome library can be found in the [samples](Samples/Outcome.Samples) directory._
+## Walkthrough
 
 ### Producing
 
 The Outcome library provides the `Outcome<TValue>` type, which represents the outcome of an operation.
-An operation is either successful or fails, which is the two states an `Outcome<TValue>` can be.
+An operation can either succeed or fail, which is the two states an `Outcome<TValue>` can be.
 So if your method can throw an error, return an `Outcome<TValue>`.
 
 _`Outcome<TValue>` provides some [implicit operators](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/user-defined-conversion-operators).
-This allows you to return an `Error` and have it turned into an `Outcome<TValue> automatically._
+This allows you to return an `Error` and have it turned into an `Outcome<TValue>` automatically._
 
 ```csharp
-Outcome<User> CreateUser(string username)
+public Outcome<User> CreateUser(string username)
 {
-  var userExists = // .. Check for the user ..
+  var userExists = _users.Any(u => u.Username == username);
   if (userExists)
   {
-    return new Error("user already exists"); // or new Outcome<User>(new Error(...)).
+    // We can use implicit returns to save on typing!
+    return new Error("user already exists"); // or new Outcome<User>(...).
   }
 
-  // .. Do some work ..
+  var user = new User(username);
+  _users.Add(user);
   return user; // or new Outcome<User>(user).
 }
 ```
@@ -62,7 +50,7 @@ You can also provide your own error type.
 ```csharp
 public enum CreateUserError { UsernameTaken, ConnectionError }
 
-Outcome<User, CreateUserError> CreateUser(string username)
+public Outcome<User, CreateUserError> CreateUser(string username)
 {
   // ...
   if (userExists)
@@ -99,12 +87,3 @@ var (user, error) = userService.CreateUser("Nocturnal");
 // or
 var (status, user, error) = userService.CreateUser("Nocturnal");
 ```
-
-## Pain Points
-
-There's no getting around that the standard library is designed with exceptions in mind.
-So by using this library, you will still have to think about exceptions.
-
-## Versioning
-
-Outcome follows the [SemVer](https://semver.org/) versioning scheme.

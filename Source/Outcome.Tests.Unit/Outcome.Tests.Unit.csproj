@@ -2,13 +2,13 @@
 
     <PropertyGroup>
 		<!-- Project -->
+        <IsPackable>false</IsPackable>
 		<LangVersion>latest</LangVersion>
         <TargetFramework>net9.0</TargetFramework>
 		<RootNamespace>NocturnalGroup.Outcome.Tests.Unit</RootNamespace>
 
 		<!-- Features -->
 		<Nullable>enable</Nullable>
-        <IsPackable>false</IsPackable>
 		<ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
