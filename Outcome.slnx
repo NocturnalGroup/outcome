@@ -1,9 +1,0 @@
-﻿<Solution>
-  <Folder Name="/Samples/">
-    <Project Path="Samples\Outcome.Samples\Outcome.Samples.csproj" Type="Classic C#" />
-  </Folder>
-  <Folder Name="/Source/">
-    <Project Path="Source\Outcome.Tests.Unit\Outcome.Tests.Unit.csproj" Type="Classic C#" />
-    <Project Path="Source\Outcome\Outcome.csproj" Type="Classic C#" />
-  </Folder>
-</Solution>
